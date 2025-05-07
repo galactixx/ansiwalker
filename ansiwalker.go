@@ -4,6 +4,10 @@ import (
 	"unicode/utf8"
 )
 
+// walkReturnRune decodes and returns the next visible rune from
+// the string starting at index i, along with its byte size, the
+// index of the next position, and a boolean indicating if the
+// end of the string has been reached.
 func walkReturnRune(s string, i int) (rune, int, int, bool) {
 	if i >= len(s) {
 		return rune(0), 0, -1, false
@@ -14,6 +18,10 @@ func walkReturnRune(s string, i int) (rune, int, int, bool) {
 	return r, rSize, nextI, isEOF
 }
 
+// ANSIWalk scans the input string s from index i, skipping any
+// ANSI/VT100 escape sequences, and returns the next visible
+// rune, its byte size, the index to resume from, and a boolean
+// indicating if the end of the string has been reached.
 func ANSIWalk(s string, i int) (rune, int, int, bool) {
 	// If it’s not ESC (0x1B), decode & emit the rune
 	if s[i] != 0x1B {
