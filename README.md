@@ -27,16 +27,22 @@ import (
 
 func main() {
     input := "\x1b[31mError:\x1b[0m Something went wrong"
-    for i := 0; ; {
+    buf := strings.Builder{}
+    i := 0
+    for i < len(input) {
         r, size, next, ok := ansiwalker.ANSIWalk(input, i)
-        if !ok {
-            break
+        if ok {
+          buf.WriteRune(r)
         }
-        fmt.Printf("%c", r)
         i = next
     }
-    // Output: Error: Something went wrong
+    fmt.Println(buf.String())
 }
+```
+
+### Output:
+```text
+Error: Something went wrong
 ```
 
 ## 🔍 **API**
