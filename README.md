@@ -2,7 +2,7 @@
   <img src="/docs/logo.png" alt="ansiwalker logo" width="525"/>
 </p>
 
-`ansiwalker` is an extremely lightweight Go package for iterating through strings or byte slices while skipping all ANSI/VT100 escape sequences, ensuring that only printable runes are processed.
+`ansiwalker` is an extremely lightweight Go package for iterating through strings or byte slices while skipping all ANSI/VT100 escape sequences.
 
 ## ✨ **Features**
 
